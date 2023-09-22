@@ -15,6 +15,18 @@ function writePassword() {
 }
 
 
+function myFunction() {
+  let person = prompt("Please enter your name", "Harry Potter");
+  if (person != null) {
+    document.getElementById("demo").innerHTML =
+    "Hello " + person + "! How are you today?";
+
+myFunction()
+
+
+
+
+  }}
 
 var numChar= 128;
 var upper = true;
@@ -52,6 +64,7 @@ const upperPass =[]
 const numPass =[]
 const specialPass =[]
 const initialEight=[]
+passwordAddon=[]            // defines passwordAddon as an empty array
 // ---> DEFINED LATER ---- passwordAddon = lowerPass.concat(upperPass,numberPass,specialPass)
 
 const allCharsArr = lowerCaseArray.concat(upperCaseArray, numberArray,specialArray);
@@ -89,7 +102,7 @@ for (var i = 0; i < [numChar]; i++) {
 
 //------------------------------------------------
 //                                                                    IF UPPER IS TRUE RUN THIS BLOCK
-
+//------------------------------------------------
 if (upper===true) {
   initialEight.push(upperCaseArray[0])
   initialEight.push(upperCaseArray[1])
@@ -102,7 +115,7 @@ if (upper===true) {
 //------------------------------------------------
 //------------------------------------------------
 //                                                              IF NUMBER IS TRUE RUN THIS BLOCK
-
+//------------------------------------------------
 if (number===true) {
   initialEight.push(numberArray[0])
   initialEight.push(numberArray[1])
@@ -124,16 +137,24 @@ if (special===true) {
    }
 }
 
-
-passwordAddon=[]            // defines passwordAddon as an empty array
 // ADDS Everything in the preliminary arrays, lowerpass,upperPass,numPass,specialPass to the passwordAddon array
-// this could be shortened to a function in the future but its not working as a functin currently
 
-//lowerpass
+function addValues(values){
   for(var i = 0; i < numChar; i++)
-  {passwordAddon.push(lowerPass[i])
-    }
+   passwordAddon.push(values[i])
+}
 
+addValues(lowerPass);
+addValues(upperPass);
+addValues(numPass);
+addValues(specialPass);
+//                            Randomizes Password Addon
+randomize(passwordAddon)
+//lowerpass
+  //for(var i = 0; i < numChar; i++)
+  //{passwordAddon.push(lowerPass[i])
+   // }
+/*
 //upperpass
     for(var i = 0; i < numChar; i++)
     {passwordAddon.push(upperPass[i])
@@ -148,8 +169,8 @@ passwordAddon=[]            // defines passwordAddon as an empty array
     for(var i = 0; i < numChar; i++)
     {passwordAddon.push(specialPass[i])
       }
-  
-      randomize(passwordAddon)
+  */
+    
 
 
       //OLD BACKUPMETHOD TO ADD CHARACTERS TO PASSWORDADDON
@@ -162,12 +183,22 @@ passwordAddon=[]            // defines passwordAddon as an empty array
 //should push any password groups list into this function
 //should push any password groups list into this function
 // but it doesnt work
+
+
+
+
+// WORKS
+//for(var i = 0; i < numChar; i++)
+//{passwordAddon.push(lowerPass[i])
+ // }
+
+//DOESNT WORK
 function addValues(values){
-   for(var i = 0; i < 25; i++){}
+   for(var i = 0; i < numChar; i++)
     passwordAddon.push(values[i])
 }
-addValues(lowerPass)
-//randomize(passwordAddon);
+addValues(lowerPass);
+
 
 
 passwordOut=[]                                                 // CREATES PASSWORD OUT
