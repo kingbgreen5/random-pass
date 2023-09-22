@@ -16,15 +16,9 @@ function writePassword() {
 
 
 
-
-
-
-
-
-
-var numChar= 10;
+var numChar= 128;
 var upper = true;
-var number = false;
+var number = true;
 var special= true;
 
 
@@ -34,12 +28,9 @@ var special= true;
 function randomize(values) {
   let index = values.length,
     randomIndex;
-  // While there remain elements to shuffle.
   while (index != 0) {
-    // Pick a remaining element.
     randomIndex = Math.floor(Math.random() * index);
     index--;
-    // And swap it with the current element.
     [values[index], values[randomIndex]] = [values[randomIndex], values[index]];
   }
   return values;
@@ -55,9 +46,7 @@ const upperCaseArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N",
 const numberArray = ["1","2","3","4","5","6","7","8","9","0"];
 const specialArray = ["!","@","#","$","%","&","*","(",")",'+','-','/','<','=','>','?','@','^','~'];
 
-
-
-
+// ------------------------Blank Arrays to be filled later
 const lowerPass =[]
 const upperPass =[]
 const numPass =[]
@@ -75,179 +64,130 @@ randomize(lowerCaseArray);
 randomize(upperCaseArray);
 randomize(numberArray);
 randomize(specialArray);
-randomize(allCharsArr)
-
-//console.log(lowercasearray);
-//console.log(uppercasearray);
-//console.log(numberarray);
-//console.log(specialarray);
-
-
-
-
-
-
-
-
 
 
 console.log(numChar)
+console.log("Upper?: " + upper);
+console.log("Numbers?: " + number);
+console.log("Special?: " + special);
 
-
-
-
-//                                                            always runs every time, THIS IS THE LOWER CASE BLOCK
 
 // Prompt user when page opens
 // user inputs NUmber into numChar
 
+
+//                                                            Always runs every time, THIS IS THE LOWER CASE BLOCK
 //Adds to initialEight
-initialEight.push(lowerCaseArray[0])
-initialEight.push(lowerCaseArray[1])
+initialEight.push(lowerCaseArray[0]);
+initialEight.push(lowerCaseArray[1]);
 
 //Adds to lowerPass
 for (var i = 0; i < [numChar]; i++) {
   //                adds the random letter to password output
     lowerPass.push(lowerCaseArray[Math.floor(Math.random() * 26)])
- }
-
-console.log("InitialEight- " + initialEight);
-console.log("LowerPass " + lowerPass)
+ };
 
 //------------------------------------------------
-//                                                                      IF UPPER IS TRUE RUN THIS BLOCK
-
+//                                                                    IF UPPER IS TRUE RUN THIS BLOCK
 
 if (upper===true) {
   initialEight.push(upperCaseArray[0])
   initialEight.push(upperCaseArray[1])
-  
-  //Adds to lowerPass
+
   for (var i = 0; i < [numChar]; i++) {
-    //                adds the random letter to password output
       upperPass.push(upperCaseArray[Math.floor(Math.random() * 26)])
    }
-  
-  console.log("InitialEight- " + initialEight);
-  console.log("upperPass " + upperPass)
-}
+  };
+
 //------------------------------------------------
-
-
-
-
 //------------------------------------------------
 //                                                              IF NUMBER IS TRUE RUN THIS BLOCK
-
 
 if (number===true) {
   initialEight.push(numberArray[0])
   initialEight.push(numberArray[1])
   
-  //Adds to NUMBERPass
   for (var i = 0; i < [numChar]; i++) {
-    //                adds the random letter to password output
       numPass.push(numberArray[Math.floor(Math.random() * 10)])
    }
-  
-  console.log("InitialEight- " + initialEight);
-  console.log("numpass " + numPass)
-}
+};
 //------------------------------------------------
-
-
-
-
 //------------------------------------------------
 //                                                          IF special IS TRUE RUN THIS BLOCK
-
 //------------------------------------------------
-
-
-
-
 if (special===true) {
   initialEight.push(specialArray[0])
   initialEight.push(specialArray[1])
   
-  //Adds to NUMBERPass
   for (var i = 0; i < [numChar]; i++) {
-    //                adds the random letter to password output
       specialPass.push(specialArray[Math.floor(Math.random() * 19)])
    }
-  
-  console.log("InitialEight- " + initialEight);
-  console.log("special " + specialPass)
 }
 
 
+passwordAddon=[]            // defines passwordAddon as an empty array
+// ADDS Everything in the preliminary arrays, lowerpass,upperPass,numPass,specialPass to the passwordAddon array
+// this could be shortened to a function in the future but its not working as a functin currently
+
+//lowerpass
+  for(var i = 0; i < numChar; i++)
+  {passwordAddon.push(lowerPass[i])
+    }
+
+//upperpass
+    for(var i = 0; i < numChar; i++)
+    {passwordAddon.push(upperPass[i])
+      }
+  
+//numpass
+      for(var i = 0; i < numChar; i++)
+      {passwordAddon.push(numPass[i])
+        }
+
+    //specialpass
+    for(var i = 0; i < numChar; i++)
+    {passwordAddon.push(specialPass[i])
+      }
+  
+      randomize(passwordAddon)
 
 
+      //OLD BACKUPMETHOD TO ADD CHARACTERS TO PASSWORDADDON
+//passwordAddon.push(lowerPass)
+//passwordAddon.push(upperPass) 
+//passwordAddon.push(numPass) 
+//passwordAddon.push(specialPass) 
+//randomize(passwordAddon)
 
-
-
-
-
-
-
-
-
-
-// ADDS Everything together, almost last step
-// randomizes passwordAddon
-//add password addon
-passwordAddon=[]
-passwordAddon.push(lowerPass)
-passwordAddon.push(upperPass) 
-passwordAddon.push(numPass) 
-passwordAddon.push(specialPass) 
-randomize(passwordAddon)
-
-
-
+//should push any password groups list into this function
+//should push any password groups list into this function
+// but it doesnt work
+function addValues(values){
+   for(var i = 0; i < 25; i++){}
+    passwordAddon.push(values[i])
+}
+addValues(lowerPass)
 //randomize(passwordAddon);
-
-//let passwordOut = [initialEight.concat(passwordAddon)];
-
-//console.log("uncut password output---> " + passwordOut);
-// const passwordOut = initialEight + passwordAddon;
-// randomize(passwordOut)
-
-//passwordSliced = passwordOut.slice(0, 4);
-//console.log("cut Password Output---> " + passwordSliced);
-
-
-
-
-
-
-//[initialEight.concat(passwordAddon)]
-
-
-
 
 
 passwordOut=[]                                                 // CREATES PASSWORD OUT
 passwordOut.push(initialEight);                               // PUSHES
 passwordOut.push(passwordAddon);                              // PUSHES
-console.log("pushed password output---> " + passwordOut);
-console.log("pushed passwordAddon" + passwordAddon);
-console.log("initialEight.length " + initialEight.length);
+//console.log("pushed password output---> " + passwordOut);
+//console.log("pushed passwordAddon" + passwordAddon);
+//console.log("initialEight.length " + initialEight.length);
+//console.log("passwordAddon.length " + passwordAddon.length);
+//console.log("passwordOut "+ passwordOut)
 
-console.log("passwordAddon.length " + passwordAddon.length);
-
-
-console.log("passwordOut "+ passwordOut)
-
+randomize(passwordOut)                                                  //RANDOMIZES PASSWORDOUT, REMOVE THIS IF YOU WANT EASIER TESTING TO MAKE SURE EVERYTHING IS WORKING SO THINGS ADD SEQUENTIALL
 
  string = passwordOut.toString();                                       //changes to string
-console.log("String "+ String)
 
-var string = string.replaceAll(',','');                          //REMOVES COMMAS
+var string = string.replaceAll(',','');                                 //REMOVES COMMAS
 
 
 let slicedString = string.slice(0,numChar );                                // slices string TO numChar length
-console.log("slicedString "+ slicedString)
+console.log("slicedString---> "+ slicedString)
 
 
 
