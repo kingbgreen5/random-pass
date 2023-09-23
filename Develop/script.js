@@ -1,37 +1,71 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var hasupper = false;
 
 
+
+
+////when button is clicked, should start the function "initiate"
 
 
 // Write password to the #password input
 function writePassword() {
+
+ 
   var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  var passwordText = document.querySelector("#aria-label");
 
-  passwordText.value = password;
-
+  passwordText.textContent = abcdefghigk
+  console.log(passwordText)
 }
 
 
-function myFunction() {
-  let person = prompt("Please enter your name", "Harry Potter");
-  if (person != null) {
-    document.getElementById("demo").innerHTML =
-    "Hello " + person + "! How are you today?";
 
-myFunction()
+//--------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------
+//                              Initiate
+//--------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------
+
+var initiate = function() {
+  //--------------------------------------------------------- Ask user for their character length
+  var numChar = window.prompt("Enter Character length 8-128:");
+  if (numChar <8 ||numChar >128) {
+    alert("Please enter number between 8-128");
+    initiate()
+  }else{
+
+  
+
+
+
+//---------------------------------------------------------------asks user for lower case
+  var lower = window.confirm("Do you want your password to contain Lower Case Characters?");
+
+
+//---------------------------------------------------------------asks user for Upper case
+var upper = window.confirm("Do you want your password to contain Upper Case Characters?");
+
+
+//---------------------------------------------------------------asks user for numbers
+var number = window.confirm("Do you want your password to contain Numbers?");
+
+
+//---------------------------------------------------------------asks user for Special
+var special = window.confirm("Do you want your password to contain Special Characters?");
 
 
 
 
-  }}
+if (lower==false && upper==false && number==false && special==false ) {
+  alert("Please choose at least one character type");
+  initiate()
+}else{
 
-var numChar= 128;
-var upper = true;
-var number = true;
-var special= true;
+//var numChar= 128;
+//var lower = true;
+//var upper = true;
+//var number = true;
+//var special= true;
 
 
 // ----------------------------------------TAKEN FROM W3 SCHOOLS
@@ -79,10 +113,11 @@ randomize(numberArray);
 randomize(specialArray);
 
 
-console.log(numChar)
-console.log("Upper?: " + upper);
-console.log("Numbers?: " + number);
-console.log("Special?: " + special);
+console.log("Number of Characters:" + numChar)
+console.log("Lower Case: " + lower)
+console.log("Upper Case: " + upper);
+console.log("Numbers: " + number);
+console.log("Special: " + special);
 
 
 // Prompt user when page opens
@@ -91,6 +126,10 @@ console.log("Special?: " + special);
 
 //                                                            Always runs every time, THIS IS THE LOWER CASE BLOCK
 //Adds to initialEight
+
+
+
+if (lower===true) {
 initialEight.push(lowerCaseArray[0]);
 initialEight.push(lowerCaseArray[1]);
 
@@ -99,7 +138,7 @@ for (var i = 0; i < [numChar]; i++) {
   //                adds the random letter to password output
     lowerPass.push(lowerCaseArray[Math.floor(Math.random() * 26)])
  };
-
+}
 //------------------------------------------------
 //                                                                    IF UPPER IS TRUE RUN THIS BLOCK
 //------------------------------------------------
@@ -221,19 +260,44 @@ let slicedString = string.slice(0,numChar );                                // s
 console.log("slicedString---> "+ slicedString)
 
 
+alert("Your Password: " + slicedString);
 
 
 
 
 
+var passwordText = document.querySelectorAll('password');
+
+console.log(passwordText)
+passwordText.textarea= "TEST"
+  console.log(passwordText)
+
+
+
+  
+
+}
+}
+}
+  
 
 
 
 
 
+generateBtn.addEventListener("click",initiate);
 
 
 /*
+////listens for page to load then runs Initiate
+window.addEventListener('DOMContentLoaded', (e)=>{
+  initiate()
+})
+
+
+"run_at": "document_end"
+
+
 
 if(upper === true && number === true && special === true) {
 
